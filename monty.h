@@ -8,6 +8,7 @@
 #include <ctype.h>
 
 #define SIZE_INST 10
+#define MAX_LINE_LENGTH 1024
 
 /**
  * struct monty_s - handle data

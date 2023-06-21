@@ -7,21 +7,19 @@
 
 void execute_file(instruction_t *inst_arr)
 {
-	int found = 0, len;
+	int found = 0;
+	size_t len = 0;
 	unsigned int line_num = 0;
-	char buf[50000], *token;
+	char *buf = NULL, *token;
 	stack_t *head = NULL;
 	instruction_t *inst_help;
 
-	while ((fgets(buf, 50000, monty.file)) != NULL)
+	while (getline(&buf, &len, monty.file) != -1)
 	{
 		monty.data = NULL;
 		found = 0;
 		line_num++;
-		len = strlen(buf);
-		if (buf[len - 1] == '\n')
-			buf[len - 1] = '\0';
-		token = strtok(buf, " \t\a\b");
+		token = strtok(buf, " \n\t\a\b");
 		if (!token || *token == '#' || strcmp(token, "nop") == 0)
 			continue;
 
@@ -33,7 +31,8 @@ void execute_file(instruction_t *inst_arr)
 				found = 1;
 				if (strcmp(token, "push") == 0)
 				{
-					token = strtok(NULL, " \t\a\b");
+					token = strtok(NULL, " \n\t\a\b");
+					free(buf);
 					check_is_digit(token, line_num, &head);
 				}
 				monty.data = token;
@@ -42,6 +41,8 @@ void execute_file(instruction_t *inst_arr)
 			}
 			inst_help++;
 		}
+		if (buf)
+			free(buf);
 		if (found == 0)
 			handle_err("unknown instruction", inst_help->opcode, line_num, &head);
 	}
