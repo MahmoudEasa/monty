@@ -21,8 +21,8 @@ void execute_file(instruction_t *inst_arr)
 		len = strlen(buf);
 		if (buf[len - 1] == '\n')
 			buf[len - 1] = '\0';
-		token = strtok(buf, " ");
-		if (!token || *token == '#')
+		token = strtok(buf, " \t\a\b");
+		if (!token || *token == '#' || strcmp(token, "nop") == 0)
 			continue;
 
 		inst_help = inst_arr;
@@ -33,7 +33,7 @@ void execute_file(instruction_t *inst_arr)
 				found = 1;
 				if (strcmp(token, "push") == 0)
 				{
-					token = strtok(NULL, " ");
+					token = strtok(NULL, " \t\a\b");
 					check_is_digit(token, line_num, &head);
 				}
 				monty.data = token;

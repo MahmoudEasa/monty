@@ -8,12 +8,11 @@
 
 void handle_pchar(stack_t **head, unsigned int line_num)
 {
-	if (!head || !(*head))
+	if (!(*head))
 		handle_err("can't pchar,", "stack empty", line_num, head);
 	if ((*head)->n < 0 || (*head)->n > 127)
 		handle_err("can't pchar,", "value out of range", line_num, head);
 
-	if ((*head)->n)
-		printf("%c\n", (*head)->n);
+	printf("%c\n", (*head)->n);
 }
 
