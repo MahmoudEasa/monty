@@ -14,9 +14,10 @@ int main(int argc, char **argv)
 	unsigned int line_num = 0;
 	char buf[255], *token;
 	FILE *fp;
-	stack_t *head = NULL, *temp;
+	stack_t *head = NULL;
 	instruction_t inst_arr[SIZE_INST] = {
 		{"push", handle_push},
+		{"pall", handle_pall},
 		{NULL, NULL},
 	};
 
@@ -51,23 +52,15 @@ int main(int argc, char **argv)
 						if (!isdigit(token[j]))
 							handle_err("usage: push", "integer", line_num);
 					}
-					data = token;
-					inst_arr[i].f(&head, line_num);
-					break;
 				}
+				data = token;
+				inst_arr[i].f(&head, line_num);
+				break;
 			}
 			i++;
 		}
 		if (found == 0)
 			handle_err("unknown instruction", inst_arr[i].opcode, line_num);
-	}
-	temp = head->prev;
-	while (temp)
-	{
-		printf("%d\n", temp->n);
-		temp = temp->prev;
-		if (temp == head->prev)
-		break;
 	}
 	fclose(fp);
 	return (0);

@@ -7,7 +7,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define SIZE_INST 2
+#define SIZE_INST 3
 
 char *data;
 
@@ -20,12 +20,11 @@ char *data;
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
  */
-
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -39,12 +38,12 @@ typedef struct stack_s
 
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 void handle_err(char *message, char *str, int line_num);
 void handle_push(stack_t **head, unsigned int line_num);
-
+void handle_pall(stack_t **head, unsigned int line_num);
 #endif /* MONTY_H */
 
