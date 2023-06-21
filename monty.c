@@ -19,10 +19,10 @@ int main(int argc, char **argv)
 	};
 
 	if (argc != 2)
-		handle_err("USAGE: monty", "file", 0);
+		handle_err("USAGE: monty", "file", 0, NULL);
 	fp = fopen(argv[1], "r");
 		if (!fp)
-			handle_err("Error: Can't open file", argv[1], 0);
+			handle_err("Error: Can't open file", argv[1], 0, NULL);
 
 		execute_file(fp, inst_arr);
 	fclose(fp);
@@ -36,11 +36,12 @@ int main(int argc, char **argv)
  * @line_num: input unsigned int
 */
 
-void handle_err(char *message, char *str, int line_num)
+void handle_err(char *message, char *str, int line_num, stack_t **head)
 {
 	if (!line_num)
 		fprintf(stderr, "%s %s\n", message, str);
 	else
 		fprintf(stderr, "L%u: %s %s\n", line_num, message, str);
+	free_list(head);
 	exit(EXIT_FAILURE);
 }

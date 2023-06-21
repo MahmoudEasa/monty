@@ -8,6 +8,6 @@
 void handle_pint(stack_t **head, unsigned int line_num)
 {
 	if (!(*head))
-		handle_err("can't pint,", "stack empty", line_num);
+		handle_err("can't pint,", "stack empty", line_num, head);
 	printf("%d\n", (*head)->n);
 }

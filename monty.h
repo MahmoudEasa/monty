@@ -42,12 +42,13 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void handle_err(char *message, char *str, int line_num);
+void handle_err(char *message, char *str, int line_num, stack_t **head);
 void handle_push(stack_t **head, unsigned int line_num);
 void handle_pall(stack_t **head, unsigned int line_num);
 void handle_pint(stack_t **head, unsigned int line_num);
 void execute_file(FILE *fp, instruction_t *inst_arr);
-void check_is_digit(char *token, unsigned int line_num);
+void check_is_digit(char *token, unsigned int line_num, stack_t **head);
+void free_list(stack_t **head);
 
 #endif /* MONTY_H */
 

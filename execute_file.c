@@ -35,7 +35,7 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
 				if (strcmp(token, "push") == 0)
 				{
 					token = strtok(NULL, " ");
-					check_is_digit(token, line_num);
+					check_is_digit(token, line_num, &head);
 				}
 				data = token;
 				inst_help->f(&head, line_num);
@@ -44,8 +44,10 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
 			inst_help++;
 		}
 		if (found == 0)
-			handle_err("unknown instruction", inst_help->opcode, line_num);
+			handle_err("unknown instruction", inst_help->opcode, line_num, &head);
 	}
+	if (head)
+		free_list(&head);
 }
 
 /**
@@ -54,13 +56,13 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
  * @line_num: unsigned int
  */
 
-void check_is_digit(char *token, unsigned int line_num)
+void check_is_digit(char *token, unsigned int line_num, stack_t **head)
 {
 	int i;
 
 	if (token)
 		for (i = 0; token[i]; i++)
 			if (!isdigit(token[i]))
-				handle_err("usage: push", "integer", line_num);
+				handle_err("usage: push", "integer", line_num, head);
 }
 
