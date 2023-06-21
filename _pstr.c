@@ -8,11 +8,23 @@
 
 void handle_pstr(stack_t **head, unsigned int line_num)
 {
-	if (!head || !(*head))
-		handle_err("can't pchar,", "stack empty", line_num, head);
-	if ((*head)->n < 0 || (*head)->n > 127)
-		handle_err("can't pchar,", "value out of range", line_num, head);
+	stack_t *temp = *head;
+	(void)line_num;
 
-	printf("pstr: %d\n", (*head)->n);
+	if (!head || !(*head))
+	{
+		printf("\n");
+		return;
+	}
+
+	while ((temp->n != 0))
+	{
+		if ((temp)->n > 0 && (temp)->n <= 127)
+			printf("%c", (temp)->n);
+		temp = temp->next;
+		if (temp == *head)
+			break;
+	}
+	printf("\n");
 }
 
