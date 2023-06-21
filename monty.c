@@ -45,6 +45,8 @@ int main(int argc, char **argv)
 			if (strcmp(token, inst_arr[i].opcode) == 0)
 			{
 				found = 1;
+				if (strcmp(token, "pall") != 0)
+				{
 				token = strtok(NULL, " ");
 				if (token)
 				{
@@ -53,7 +55,7 @@ int main(int argc, char **argv)
 						if (!isdigit(token[j]))
 							handle_err("usage: push", "integer", line_num);
 					}
-				}
+				}}
 				data = token;
 				inst_arr[i].f(&head, line_num);
 				break;
