@@ -46,5 +46,8 @@ void handle_err(char *message, char *str, int line_num);
 void handle_push(stack_t **head, unsigned int line_num);
 void handle_pall(stack_t **head, unsigned int line_num);
 void handle_pint(stack_t **head, unsigned int line_num);
+void execute_file(FILE *fp, instruction_t *inst_arr);
+void check_is_digit(char *token, unsigned int line_num);
+
 #endif /* MONTY_H */
 
