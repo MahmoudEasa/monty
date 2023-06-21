@@ -35,7 +35,7 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
 				if (strcmp(token, "push") == 0)
 				{
 					token = strtok(NULL, " ");
-					check_is_digit(token, line_num, &head);
+					check_is_digit(token, line_num, &head, fp);
 				}
 				data = token;
 				inst_help->f(&head, line_num);
@@ -44,7 +44,7 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
 			inst_help++;
 		}
 		if (found == 0)
-			handle_err("unknown instruction", inst_help->opcode, line_num, &head);
+			handle_err("unknown instruction", inst_help->opcode, line_num, &head, fp);
 	}
 	if (head)
 		free_list(&head);
@@ -55,15 +55,17 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
  * @token: string
  * @line_num: unsigned int
  * @head: the head of the linked list
+ * @fp: pointer to file
  */
 
-void check_is_digit(char *token, unsigned int line_num, stack_t **head)
+void check_is_digit(char *token, unsigned int line_num,
+		stack_t **head, FILE *fp)
 {
 	int i;
 
 	if (token)
 		for (i = 0; token[i]; i++)
 			if (!isdigit(token[i]))
-				handle_err("usage: push", "integer", line_num, head);
+				handle_err("usage: push", "integer", line_num, head, fp);
 }
 

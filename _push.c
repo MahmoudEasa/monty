@@ -11,11 +11,12 @@ void handle_push(stack_t **head, unsigned int line_num)
 	stack_t *new_node;
 	int num;
 
+	if (!data)
+		handle_err("usage: push", "integer", line_num, head, NULL);
+
 	new_node = (stack_t *)malloc(sizeof(stack_t));
 	if (!new_node)
-		handle_err("Error: malloc", "failed", 0, head);
-	if (!data)
-		handle_err("usage: push", "integer", line_num, head);
+		handle_err("Error: malloc", "failed", 0, head, NULL);
 
 	num = atoi(data);
 	new_node->n = num;
