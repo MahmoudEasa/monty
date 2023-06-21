@@ -45,17 +45,18 @@ int main(int argc, char **argv)
 			if (strcmp(token, inst_arr[i].opcode) == 0)
 			{
 				found = 1;
-				if (strcmp(token, "pall") != 0)
+				if (strcmp(token, "push") == 0)
 				{
-				token = strtok(NULL, " ");
-				if (token)
-				{
-					for (j = 0; token[j]; j++)
+					token = strtok(NULL, " ");
+					if (token)
 					{
-						if (!isdigit(token[j]))
-							handle_err("usage: push", "integer", line_num);
+						for (j = 0; token[j]; j++)
+						{
+							if (!isdigit(token[j]))
+								handle_err("usage: push", "integer", line_num);
+						}
 					}
-				}}
+				}
 				data = token;
 				inst_arr[i].f(&head, line_num);
 				break;
