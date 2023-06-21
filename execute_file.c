@@ -9,11 +9,11 @@ void execute_file(instruction_t *inst_arr)
 {
 	int found = 0, len;
 	unsigned int line_num = 0;
-	char buf[255], *token;
+	char buf[1024], *token;
 	stack_t *head = NULL;
 	instruction_t *inst_help;
 
-	while ((fgets(buf, 255, monty.file)) != NULL)
+	while ((fgets(buf, 1024, monty.file)) != NULL)
 	{
 		monty.data = NULL;
 		found = 0;
