@@ -9,7 +9,22 @@
 
 #define SIZE_INST 10
 
-char *data;
+/**
+ * struct monty_s - handle data
+ * @data: data to push in stack
+ * @file: pointer to file
+ *
+ * Description: handle data
+ */
+
+typedef struct monty_s
+{
+	char *data;
+	FILE *file;
+} monty_d;
+
+extern monty_d monty;
+monty_d monty;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -42,8 +57,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void handle_err(char *message, char *str, int line_num,
-		stack_t **head, FILE *fp);
+void handle_err(char *message, char *str, int line_num,	stack_t **head);
 
 void handle_push(stack_t **head, unsigned int line_num);
 void handle_pall(stack_t **head, unsigned int line_num);
@@ -55,9 +69,8 @@ void handle_rotr(stack_t **head, unsigned int line_num);
 void handle_stack(stack_t **head, unsigned int line_num);
 void handle_queue(stack_t **head, unsigned int line_num);
 
-void execute_file(FILE *fp, instruction_t *inst_arr);
-void check_is_digit(char *token, unsigned int line_num,
-		stack_t **head, FILE *fp);
+void execute_file(instruction_t *inst_arr);
+void check_is_digit(char *token, unsigned int line_num,	stack_t **head);
 void free_list(stack_t **head);
 
 #endif /* MONTY_H */

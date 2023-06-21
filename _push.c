@@ -11,14 +11,14 @@ void handle_push(stack_t **head, unsigned int line_num)
 	stack_t *new_node;
 	int num;
 
-	if (!data)
-		handle_err("usage: push", "integer", line_num, head, NULL);
+	if (!(monty.data))
+		handle_err("usage: push", "integer", line_num, head);
 
 	new_node = (stack_t *)malloc(sizeof(stack_t));
 	if (!new_node)
-		handle_err("Error: malloc", "failed", 0, head, NULL);
+		handle_err("Error: malloc", "failed", 0, head);
 
-	num = atoi(data);
+	num = atoi(monty.data);
 	new_node->n = num;
 	new_node->prev = NULL;
 	new_node->next = NULL;

@@ -2,11 +2,10 @@
 
 /**
  * execute_file - handle command line from the file
- * @fp: pointer to the file
  * @inst_arr: array of instructions
  */
 
-void execute_file(FILE *fp, instruction_t *inst_arr)
+void execute_file(instruction_t *inst_arr)
 {
 	int found = 0, len;
 	unsigned int line_num = 0;
@@ -14,9 +13,9 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
 	stack_t *head = NULL;
 	instruction_t *inst_help;
 
-	while ((fgets(buf, 255, fp)) != NULL)
+	while ((fgets(buf, 255, monty.file)) != NULL)
 	{
-		data = NULL;
+		monty.data = NULL;
 		found = 0;
 		line_num++;
 		len = strlen(buf);
@@ -35,16 +34,16 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
 				if (strcmp(token, "push") == 0)
 				{
 					token = strtok(NULL, " ");
-					check_is_digit(token, line_num, &head, fp);
+					check_is_digit(token, line_num, &head);
 				}
-				data = token;
+				monty.data = token;
 				inst_help->f(&head, line_num);
 				break;
 			}
 			inst_help++;
 		}
 		if (found == 0)
-			handle_err("unknown instruction", inst_help->opcode, line_num, &head, fp);
+			handle_err("unknown instruction", inst_help->opcode, line_num, &head);
 	}
 	if (head)
 		free_list(&head);
@@ -55,19 +54,17 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
  * @token: string
  * @line_num: unsigned int
  * @head: the head of the linked list
- * @fp: pointer to file
  */
 
-void check_is_digit(char *token, unsigned int line_num,
-		stack_t **head, FILE *fp)
+void check_is_digit(char *token, unsigned int line_num,	stack_t **head)
 {
 	int i;
 
 	if (!token)
-		handle_err("usage: push", "integer", line_num, head, fp);
+		handle_err("usage: push", "integer", line_num, head);
 
 	for (i = 0; token[i]; i++)
 		if (!isdigit(token[i]) && token[0] != '-')
-			handle_err("usage: push", "integer", line_num, head, fp);
+			handle_err("usage: push", "integer", line_num, head);
 }
 
