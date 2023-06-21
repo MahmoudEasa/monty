@@ -7,7 +7,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define SIZE_INST 4
+#define SIZE_INST 10
 
 char *data;
 
@@ -44,9 +44,17 @@ typedef struct instruction_s
 
 void handle_err(char *message, char *str, int line_num,
 		stack_t **head, FILE *fp);
+
 void handle_push(stack_t **head, unsigned int line_num);
 void handle_pall(stack_t **head, unsigned int line_num);
 void handle_pint(stack_t **head, unsigned int line_num);
+void handle_pchar(stack_t **head, unsigned int line_num);
+void handle_pstr(stack_t **head, unsigned int line_num);
+void handle_rotl(stack_t **head, unsigned int line_num);
+void handle_rotr(stack_t **head, unsigned int line_num);
+void handle_stack(stack_t **head, unsigned int line_num);
+void handle_queue(stack_t **head, unsigned int line_num);
+
 void execute_file(FILE *fp, instruction_t *inst_arr);
 void check_is_digit(char *token, unsigned int line_num,
 		stack_t **head, FILE *fp);

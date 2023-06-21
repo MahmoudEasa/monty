@@ -15,6 +15,12 @@ int main(int argc, char **argv)
 		{"push", handle_push},
 		{"pall", handle_pall},
 		{"pint", handle_pint},
+		{"pchar", handle_pchar},
+		{"pstr", handle_pstr},
+		{"rotl", handle_rotl},
+		{"rotr", handle_rotr},
+		{"stack", handle_stack},
+		{"queue", handle_queue},
 		{NULL, NULL},
 	};
 

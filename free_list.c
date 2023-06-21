@@ -12,7 +12,7 @@ void free_list(stack_t **head)
 	if (head && *head)
 	{
 		temp = (*head)->next;
-		while (temp != *head)
+		while ((temp && temp != *head))
 		{
 			help = temp->next;
 			free(temp);
