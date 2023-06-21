@@ -7,7 +7,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define SIZE_INST 3
+#define SIZE_INST 4
 
 char *data;
 
@@ -45,5 +45,6 @@ typedef struct instruction_s
 void handle_err(char *message, char *str, int line_num);
 void handle_push(stack_t **head, unsigned int line_num);
 void handle_pall(stack_t **head, unsigned int line_num);
+void handle_pint(stack_t **head, unsigned int line_num);
 #endif /* MONTY_H */
 

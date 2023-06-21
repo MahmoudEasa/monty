@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 	instruction_t inst_arr[SIZE_INST] = {
 		{"push", handle_push},
 		{"pall", handle_pall},
+		{"pint", handle_pint},
 		{NULL, NULL},
 	};
 
