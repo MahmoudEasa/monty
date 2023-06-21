@@ -34,6 +34,7 @@ int main(int argc, char **argv)
  * @message: input message
  * @str: input string
  * @line_num: input unsigned int
+ * @head: the head of the linked list
 */
 
 void handle_err(char *message, char *str, int line_num, stack_t **head)

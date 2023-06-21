@@ -54,6 +54,7 @@ void execute_file(FILE *fp, instruction_t *inst_arr)
  * check_is_digit - check if argument 2 include digit
  * @token: string
  * @line_num: unsigned int
+ * @head: the head of the linked list
  */
 
 void check_is_digit(char *token, unsigned int line_num, stack_t **head)

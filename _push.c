@@ -16,7 +16,7 @@ void handle_push(stack_t **head, unsigned int line_num)
 		handle_err("Error: malloc", "failed", 0, head);
 	if (!data)
 		handle_err("usage: push", "integer", line_num, head);
-	
+
 	num = atoi(data);
 	new_node->n = num;
 	new_node->prev = NULL;
