@@ -63,9 +63,11 @@ void check_is_digit(char *token, unsigned int line_num,
 {
 	int i;
 
-	if (token)
-		for (i = 0; token[i]; i++)
-			if (!isdigit(token[i]))
-				handle_err("usage: push", "integer", line_num, head, fp);
+	if (!token)
+		handle_err("usage: push", "integer", line_num, head, fp);
+
+	for (i = 0; token[i]; i++)
+		if (!isdigit(token[i]))
+			handle_err("usage: push", "integer", line_num, head, fp);
 }
 
