@@ -13,6 +13,7 @@ void handle_pchar(stack_t **head, unsigned int line_num)
 	if ((*head)->n < 0 || (*head)->n > 127)
 		handle_err("can't pchar,", "value out of range", line_num, head);
 
-	printf("%c\n", (*head)->n);
+	if ((*head)->n)
+		printf("%c\n", (*head)->n);
 }
 
