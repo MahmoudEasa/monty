@@ -20,6 +20,8 @@ int main(int argc, char **argv)
 		{"add", handle_add},
 		{"sub", handle_sub},
 		{"div", handle_div},
+		{"mod", handle_mod},
+		{"mul", handle_mul},
 		{"swap", handle_swap},
 		{"pstr", handle_pstr},
 		{"rotl", handle_rotl},
