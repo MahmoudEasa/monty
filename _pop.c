@@ -15,6 +15,7 @@ void handle_pop(stack_t **head, unsigned int line_num)
 	if (!(*head)->next)
 	{
 		free(*head);
+		*head = NULL;
 		return;
 	}
 	temp = (*head)->next;
