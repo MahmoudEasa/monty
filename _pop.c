@@ -21,7 +21,6 @@ void handle_pop(stack_t **head, unsigned int line_num)
 	temp = (*head)->next;
 	temp->prev = (*head)->prev;
 	(*head)->prev->next = temp;
-	(*head)->prev->prev = temp;
 	free(*head);
 	*head = temp;
 }
