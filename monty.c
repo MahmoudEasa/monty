@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 		{"pchar", handle_pchar},
 		{"pint", handle_pint},
 		{"pop", handle_pop},
+		{"add", handle_add},
 		{"swap", handle_swap},
 		{"pstr", handle_pstr},
 		{"rotl", handle_rotl},
