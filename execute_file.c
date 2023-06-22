@@ -32,6 +32,12 @@ void execute_file(instruction_t *inst_arr)
 				if (strcmp(token, "push") == 0)
 				{
 					token = strtok(NULL, " \n\t\a\b");
+					while ((!token && (strchr(buf, '\n') == NULL)))
+					{
+						fgets(buf, MAX_LINE_LENGTH, monty.file);
+						token = strtok(buf, " \n\t\a\b");
+
+					}
 					check_is_digit(token, line_num, &head);
 				}
 				monty.data = token;
