@@ -16,7 +16,7 @@ void handle_mul(stack_t **head, unsigned int line_num)
 	top = *head;
 	second = (*head)->next;
 
-	result = top->n / second->n;
+	result = second->n / top->n;
 	second->prev = top->prev;
 	top->prev->next = second;
 	free(top);

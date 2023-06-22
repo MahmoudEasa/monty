@@ -18,7 +18,7 @@ void handle_mod(stack_t **head, unsigned int line_num)
 
 	if (top->n == 0)
 		handle_err("division by", "zero", line_num, head);
-	result = top->n % second->n;
+	result = second->n % top->n;
 	second->prev = top->prev;
 	top->prev->next = second;
 	free(top);
