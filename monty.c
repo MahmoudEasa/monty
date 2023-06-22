@@ -14,8 +14,10 @@ int main(int argc, char **argv)
 	instruction_t inst_arr[] = {
 		{"push", handle_push},
 		{"pall", handle_pall},
-		{"pint", handle_pint},
 		{"pchar", handle_pchar},
+		{"pint", handle_pint},
+		{"pop", handle_pop},
+		{"swap", handle_swap},
 		{"pstr", handle_pstr},
 		{"rotl", handle_rotl},
 		{"rotr", handle_rotr},
