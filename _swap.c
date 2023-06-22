@@ -9,9 +9,9 @@
 void handle_swap(stack_t **head, unsigned int line_num)
 {
 	stack_t *temp;
-	int m = 2;
+	int m = 0;
 
-	temp = (*head);
+	temp = *head;
 	while (temp)
 	{
 		temp = temp->next;
