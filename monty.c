@@ -23,6 +23,7 @@ int main(int argc, char **argv)
 		{"mod", handle_mod},
 		{"mul", handle_mul},
 		{"swap", handle_swap},
+		{"nop", handle_nop},
 		{"pstr", handle_pstr},
 		{"rotl", handle_rotl},
 		{"rotr", handle_rotr},
