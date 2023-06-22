@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	};
 
 	monty.file = NULL;
-	monty.format_data = "stack";
+	strcpy(monty.format_data, "stack");
 
 	if (argc == 1 || argc > 2)
 		handle_err("USAGE: monty", "file", 0, NULL);

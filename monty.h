@@ -24,7 +24,7 @@
 
 typedef struct monty_s
 {
-	char *format_data;
+	char format_data[10];
 	char *data;
 	FILE *file;
 	char buf[MAX_LINE_LENGTH];

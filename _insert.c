@@ -11,6 +11,6 @@ void _insert(stack_t **head, unsigned int line_num)
 	(void)head;
 	(void)line_num;
 
-	printf("_insert");
+	printf("_insert\n");
 }
 
