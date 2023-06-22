@@ -10,11 +10,9 @@ void handle_swap(stack_t **head, unsigned int line_num)
 {
 	stack_t *temp;
 
-	if (!(*head))
+	if (!(*head) || !(*head)->next)
 		handle_err("can't swap,", "stack too short", line_num, head);
 	temp = *head;
-	if (!temp->next)
-		handle_err("can't swap,", "stack too short", line_num, head);
 	temp = (*head)->next;
 	temp->prev = (*head)->prev;
 	(*head)->prev->next = temp;
