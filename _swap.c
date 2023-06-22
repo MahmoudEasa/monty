@@ -11,6 +11,8 @@ void handle_swap(stack_t **head, unsigned int line_num)
 	stack_t *temp;
 	int m = 0;
 
+	if (!(*head))
+		handle_err("can't swap,", "stack too short", line_num, head);
 	temp = *head;
 	while (temp)
 	{
