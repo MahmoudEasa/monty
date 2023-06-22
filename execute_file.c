@@ -24,7 +24,7 @@ void execute_file(instruction_t *inst_arr)
 			continue;
 		if (strcmp(monty.arg, "stack") == 0 || strcmp(monty.arg, "queue") == 0)
 		{
-			strcpy(monty.format_data,  monty.arg);
+			strcpy(monty.format_data, monty.arg);
 			continue;
 		}
 		inst_help = inst_arr;
