@@ -15,7 +15,7 @@ void handle_div(stack_t **head, unsigned int line_num)
 		handle_err("can't div,", "stack too short", line_num, head);
 	top = *head;
 	second = (*head)->next;
-	if (second->n == 0)
+	if (top->n == 0)
 		handle_err("division by", "zero", line_num, head);
 	result = second->n / top->n;
 	second->prev = top->prev;
