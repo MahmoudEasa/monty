@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 		{"pint", handle_pint},
 		{"pop", handle_pop},
 		{"add", handle_add},
+		{"sub", handle_sub},
 		{"swap", handle_swap},
 		{"pstr", handle_pstr},
 		{"rotl", handle_rotl},
