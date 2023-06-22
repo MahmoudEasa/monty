@@ -22,10 +22,15 @@ void execute_file(instruction_t *inst_arr)
 			continue;
 		if (!monty.arg || *(monty.arg) == '#' || strcmp(monty.arg, "nop") == 0)
 			continue;
+		if (strcmp(monty.arg, "stack") == 0 || strcmp(monty.arg, "queue") == 0)
+		{
+			monty.format_data = monty.arg;
+			continue;
+		}
 		inst_help = inst_arr;
 		check_opcode(inst_help, line_num, &head);
 		if (monty.found_arg == 0)
-			handle_err("unknown instruction", inst_help->opcode, line_num, &head);
+			handle_err("unknown instruction", monty.arg, line_num, &head);
 	}
 	if (head)
 		free_list(&head);

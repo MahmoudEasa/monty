@@ -6,7 +6,7 @@
  * @line_num: integer input
 */
 
-void handle_push(stack_t **head, unsigned int line_num)
+void _push(stack_t **head, unsigned int line_num)
 {
 	stack_t *new_node;
 	int num;

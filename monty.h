@@ -17,12 +17,14 @@
  * @buf: command line
  * @arg: argument
  * @found_arg: integer
+ * @format_data: format to stack or queue
  *
  * Description: handle data
  */
 
 typedef struct monty_s
 {
+	char *format_data;
 	char *data;
 	FILE *file;
 	char buf[MAX_LINE_LENGTH];
@@ -73,8 +75,9 @@ void handle_pchar(stack_t **head, unsigned int line_num);
 void handle_pstr(stack_t **head, unsigned int line_num);
 void handle_rotl(stack_t **head, unsigned int line_num);
 void handle_rotr(stack_t **head, unsigned int line_num);
-void handle_stack(stack_t **head, unsigned int line_num);
-void handle_queue(stack_t **head, unsigned int line_num);
+
+void _push(stack_t **head, unsigned int line_num);
+void _insert(stack_t **head, unsigned int line_num);
 
 void execute_file(instruction_t *inst_arr);
 void check_is_digit(char *token, unsigned int line_num,	stack_t **head);

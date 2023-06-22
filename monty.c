@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	FILE *fp;
-	instruction_t inst_arr[SIZE_INST] = {
+	instruction_t inst_arr[] = {
 		{"push", handle_push},
 		{"pall", handle_pall},
 		{"pint", handle_pint},
@@ -19,12 +19,11 @@ int main(int argc, char **argv)
 		{"pstr", handle_pstr},
 		{"rotl", handle_rotl},
 		{"rotr", handle_rotr},
-		{"stack", handle_stack},
-		{"queue", handle_queue},
 		{NULL, NULL},
 	};
 
 	monty.file = NULL;
+	monty.format_data = "stack";
 
 	if (argc == 1 || argc > 2)
 		handle_err("USAGE: monty", "file", 0, NULL);
