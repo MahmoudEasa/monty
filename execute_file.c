@@ -74,8 +74,8 @@ void check_opcode(instruction_t *inst_help,
 					monty.arg = strtok(monty.buf, " \n\t\a\b");
 				}
 				check_is_digit(monty.arg, line_num, head);
+				monty.data = monty.arg;
 			}
-			monty.data = monty.arg;
 			inst_help->f(head, line_num);
 			break;
 		}
