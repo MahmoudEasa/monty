@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * handle_push - a function that push data to linked
+ * _push - a function that push data to linked
  * @head: a pointer to first node
  * @line_num: integer input
 */
