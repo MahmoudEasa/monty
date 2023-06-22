@@ -12,10 +12,9 @@ void handle_pop(stack_t **head, unsigned int line_num)
 
 	if (!(*head) || !head)
 		handle_err("can't pop", "an empty stack", line_num, head);
-	if ((*head)->next == *head)
+	if (!(*head)->next)
 	{
 		free(*head);
-		*head = NULL;
 		return;
 	}
 	temp = (*head)->next;
