@@ -7,46 +7,24 @@
 
 void execute_file(instruction_t *inst_arr)
 {
-	int found = 0;
 	unsigned int line_num = 0;
-	char buf[MAX_LINE_LENGTH], *token;
 	stack_t *head = NULL;
 	instruction_t *inst_help;
 
-	while ((fgets(buf, MAX_LINE_LENGTH, monty.file)) != NULL)
+	while ((fgets(monty.buf, MAX_LINE_LENGTH, monty.file)) != NULL)
 	{
 		monty.data = NULL;
-		found = 0;
+		monty.arg = NULL;
+		monty.found_arg = 0;
 		line_num++;
-		token = strtok(buf, " \n\t\a\b");
-		if (!token && strchr(buf, '\n') == NULL)
+		monty.arg = strtok(monty.buf, " \n\t\a\b");
+		if (!monty.arg && strchr(monty.buf, '\n') == NULL)
 			continue;
-		if (!token || *token == '#' || strcmp(token, "nop") == 0)
+		if (!monty.arg || *(monty.arg) == '#' || strcmp(monty.arg, "nop") == 0)
 			continue;
 		inst_help = inst_arr;
-		while ((inst_help->opcode))
-		{
-			if (strcmp(token, inst_help->opcode) == 0)
-			{
-				found = 1;
-				if (strcmp(token, "push") == 0)
-				{
-					token = strtok(NULL, " \n\t\a\b");
-					while ((!token && (strchr(buf, '\n') == NULL)))
-					{
-						fgets(buf, MAX_LINE_LENGTH, monty.file);
-						token = strtok(buf, " \n\t\a\b");
-
-					}
-					check_is_digit(token, line_num, &head);
-				}
-				monty.data = token;
-				inst_help->f(&head, line_num);
-				break;
-			}
-			inst_help++;
-		}
-		if (found == 0)
+		check_opcode(inst_help, line_num, &head);
+		if (monty.found_arg == 0)
 			handle_err("unknown instruction", inst_help->opcode, line_num, &head);
 	}
 	if (head)
@@ -70,5 +48,38 @@ void check_is_digit(char *token, unsigned int line_num,	stack_t **head)
 	for (i = 0; token[i]; i++)
 		if (!isdigit(token[i]) && token[0] != '-')
 			handle_err("usage: push", "integer", line_num, head);
+}
+
+/**
+ * check_opcode - check opcode
+ * @inst_help: struct
+ * @line_num: unsigned int
+ * @head: the head of the linked list
+ */
+
+void check_opcode(instruction_t *inst_help,
+		unsigned int line_num, stack_t **head)
+{
+	while ((inst_help->opcode))
+	{
+		if (strcmp(monty.arg, inst_help->opcode) == 0)
+		{
+			monty.found_arg = 1;
+			if (strcmp(monty.arg, "push") == 0)
+			{
+				monty.arg = strtok(NULL, " \n\t\a\b");
+				while ((!monty.arg && (strchr(monty.buf, '\n') == NULL)))
+				{
+					fgets(monty.buf, MAX_LINE_LENGTH, monty.file);
+					monty.arg = strtok(monty.buf, " \n\t\a\b");
+				}
+				check_is_digit(monty.arg, line_num, head);
+			}
+			monty.data = monty.arg;
+			inst_help->f(head, line_num);
+			break;
+		}
+		inst_help++;
+	}
 }
 

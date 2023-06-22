@@ -24,7 +24,6 @@ int main(int argc, char **argv)
 		{NULL, NULL},
 	};
 
-	monty.data = NULL;
 	monty.file = NULL;
 
 	if (argc == 1 || argc > 2)

@@ -14,6 +14,9 @@
  * struct monty_s - handle data
  * @data: data to push in stack
  * @file: pointer to file
+ * @buf: command line
+ * @arg: argument
+ * @found_arg: integer
  *
  * Description: handle data
  */
@@ -22,6 +25,9 @@ typedef struct monty_s
 {
 	char *data;
 	FILE *file;
+	char buf[MAX_LINE_LENGTH];
+	char *arg;
+	int found_arg;
 } monty_d;
 
 extern monty_d monty;
@@ -73,6 +79,8 @@ void handle_queue(stack_t **head, unsigned int line_num);
 void execute_file(instruction_t *inst_arr);
 void check_is_digit(char *token, unsigned int line_num,	stack_t **head);
 void free_list(stack_t **head);
+void check_opcode(instruction_t *inst_help,
+		unsigned int line_num, stack_t **head);
 
 #endif /* MONTY_H */
 
