@@ -7,7 +7,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define SIZE_INST 10
+#define SIZE_INST 12
 #define MAX_LINE_LENGTH 1024
 
 /**
@@ -70,8 +70,10 @@ void handle_err(char *message, char *str, int line_num,	stack_t **head);
 
 void handle_push(stack_t **head, unsigned int line_num);
 void handle_pall(stack_t **head, unsigned int line_num);
-void handle_pint(stack_t **head, unsigned int line_num);
 void handle_pchar(stack_t **head, unsigned int line_num);
+void handle_pint(stack_t **head, unsigned int line_num);
+void handle_pop(stack_t **head, unsigned int line_num);
+void handle_swap(stack_t **head, unsigned int line_num);
 void handle_pstr(stack_t **head, unsigned int line_num);
 void handle_rotl(stack_t **head, unsigned int line_num);
 void handle_rotr(stack_t **head, unsigned int line_num);
