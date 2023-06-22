@@ -22,7 +22,8 @@ void execute_file(instruction_t *inst_arr)
 		monty.arg = strtok(monty.buf, " \n\t\a\b");
 		if (!monty.arg && strchr(monty.buf, '\n') == NULL)
 			continue;
-		if (!monty.arg || (strcmp(monty.arg, "nup") == 0))
+		if (!monty.arg ||
+				(strcmp(monty.arg, "nop") == 0 && strlen(monty.arg) == 3))
 			continue;
 		if (strcmp(monty.arg, "stack") == 0 || strcmp(monty.arg, "queue") == 0)
 		{
