@@ -11,7 +11,7 @@ void handle_mul(stack_t **head, unsigned int line_num)
 	stack_t *top, *second;
 	unsigned int result;
 
-	if (!(*head) || !(head)->next)
+	if (!(*head) || !(*head)->next)
 		handle_err("can't mul,", "stack too short", line_num, head);
 	top = *head;
 	second = (*head)->next;
