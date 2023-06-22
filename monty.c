@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 	monty.data = NULL;
 	monty.file = NULL;
 
-	if (argc != 2)
+	if (argc == 1 || argc > 2)
 		handle_err("USAGE: monty", "file", 0, NULL);
 	fp = fopen(argv[1], "r");
 		if (!fp)
