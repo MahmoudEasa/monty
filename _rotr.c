@@ -9,8 +9,8 @@
 void handle_rotr(stack_t **head, unsigned int line_num)
 {
 	stack_t *last;
-	void(line_num);
 
+	(void) line_num;
 	if (!(*head) || !(*head)->next)
 		return;
 	last = *head;
@@ -21,7 +21,7 @@ void handle_rotr(stack_t **head, unsigned int line_num)
 			break;
 	}
 	last->prev->next = *head;
-	last->next = *head->next;
+	last->next = (*head)->next;
 	last->prev = *head;
 	(*head)->prev = last->prev;
 	*head = last;
