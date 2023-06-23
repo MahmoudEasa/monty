@@ -1,18 +1,29 @@
 #include "monty.h"
 
 /**
- * handle_rotr - ?????????
+ * handle_rotr - rotate stack to bottom
  * @head: a pointer to first node
  * @line_num: integer input
  */
 
 void handle_rotr(stack_t **head, unsigned int line_num)
 {
-	if (!head || !(*head))
-		handle_err("can't pchar,", "stack empty", line_num, head);
-	if ((*head)->n < 0 || (*head)->n > 127)
-		handle_err("can't pchar,", "value out of range", line_num, head);
+	stack_t *top;
+	void(line_num);
 
-	printf("rootr: %d\n", (*head)->n);
+	if (!(*head) || !(*head)->next)
+		return;
+	top = *head;
+	while (top)
+	{
+		top = top->next;
+		if (top == *head)
+			break;
+	}
+	top->prev->next = top->next;
+	top->next = *head;
+	top->prev = *head->next;
+	(*head)->prev = top;
+	*head = top;
 }
 
