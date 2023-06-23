@@ -8,22 +8,22 @@
 
 void handle_rotr(stack_t **head, unsigned int line_num)
 {
-	stack_t *top;
+	stack_t *last;
 	void(line_num);
 
 	if (!(*head) || !(*head)->next)
 		return;
-	top = *head;
-	while (top)
+	last = *head;
+	while (last)
 	{
-		top = top->next;
-		if (top == *head)
+		last = last->next;
+		if (last == *head)
 			break;
 	}
-	top->prev->next = top->next;
-	top->next = *head;
-	top->prev = *head->next;
-	(*head)->prev = top;
-	*head = top;
+	last->prev->next = *head;
+	last->next = *head->next;
+	last->prev = *head;
+	(*head)->prev = last->prev;
+	*head = last;
 }
 
