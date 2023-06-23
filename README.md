@@ -115,7 +115,7 @@ Monty byte code files can contain blank lines (empty or made of spaces only, and
 	queue
 ```
 
-## Examble:
+## Example:
 
 ```
 	julien@ubuntu:~/monty$ cat bytecodes/47.m
